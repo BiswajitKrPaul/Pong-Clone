@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Pong Clone"
+run/main_scene="res://game_scene.tscn"
+config/features=PackedStringArray("4.1", "Mobile")
+config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
+
+[input]
+
+w={
+"deadzone": 0.5,
+"events": []
+}
+s={
+"deadzone": 0.5,
+"events": []
+}
+
+[rendering]
+
+renderer/rendering_method="mobile"

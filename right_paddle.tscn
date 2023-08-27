@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://u5ul8gdwq63y"]
+
+[ext_resource type="Script" path="res://right_paddle.gd" id="1_nelpe"]
+[ext_resource type="Texture2D" uid="uid://djnfpwrc0x1df" path="res://assets/arts/Player.png" id="1_t1xuj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ebgl"]
+size = Vector2(20, 120)
+
+[node name="Right Paddle" type="RigidBody2D"]
+position = Vector2(1115, 235)
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_nelpe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.78814e-07, 0)
+scale = Vector2(1.17647, 1)
+texture = ExtResource("1_t1xuj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7ebgl")

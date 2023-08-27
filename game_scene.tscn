@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp4u5x7k26w4n"]
+
+[ext_resource type="Texture2D" uid="uid://b8w7ogc0a5bn7" path="res://assets/arts/Board.png" id="1_fty8x"]
+[ext_resource type="PackedScene" uid="uid://d1pnduojtqyas" path="res://walls.tscn" id="1_o2840"]
+[ext_resource type="PackedScene" uid="uid://cnuox4esocjjt" path="res://ball.tscn" id="2_mgldw"]
+[ext_resource type="PackedScene" uid="uid://cv4kjhpwllmox" path="res://paddle.tscn" id="3_k1x21"]
+[ext_resource type="PackedScene" uid="uid://u5ul8gdwq63y" path="res://right_paddle.tscn" id="4_we1wx"]
+
+[node name="Game Scene" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576.25, 324.875)
+scale = Vector2(1.43579, 1.42473)
+texture = ExtResource("1_fty8x")
+
+[node name="Upper Wall" parent="." instance=ExtResource("1_o2840")]
+
+[node name="Lower Wall" parent="." instance=ExtResource("1_o2840")]
+position = Vector2(22, 666)
+
+[node name="Ball" parent="." instance=ExtResource("2_mgldw")]
+position = Vector2(562, 275)
+
+[node name="Left Paddle" parent="." instance=ExtResource("3_k1x21")]
+position = Vector2(38, 290)
+
+[node name="Right Paddle" parent="." instance=ExtResource("4_we1wx")]
+position = Vector2(1115, 290)
