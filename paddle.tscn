@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://paddle.gd" id="1_uwf1o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ebgl"]
-size = Vector2(20, 120)
+size = Vector2(4, 120)
 
 [node name="Paddle" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -17,4 +17,5 @@ scale = Vector2(1.17647, 1)
 texture = ExtResource("1_kqpl1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_7ebgl")

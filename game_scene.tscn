@@ -1,15 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp4u5x7k26w4n"]
+[gd_scene load_steps=10 format=3 uid="uid://dp4u5x7k26w4n"]
 
+[ext_resource type="Script" path="res://game_scene.gd" id="1_1prwy"]
 [ext_resource type="Texture2D" uid="uid://b8w7ogc0a5bn7" path="res://assets/arts/Board.png" id="1_fty8x"]
 [ext_resource type="PackedScene" uid="uid://d1pnduojtqyas" path="res://walls.tscn" id="1_o2840"]
 [ext_resource type="PackedScene" uid="uid://cnuox4esocjjt" path="res://ball.tscn" id="2_mgldw"]
 [ext_resource type="PackedScene" uid="uid://cv4kjhpwllmox" path="res://paddle.tscn" id="3_k1x21"]
 [ext_resource type="PackedScene" uid="uid://u5ul8gdwq63y" path="res://right_paddle.tscn" id="4_we1wx"]
+[ext_resource type="Script" path="res://LeftArea.gd" id="6_tihmt"]
+[ext_resource type="Script" path="res://RightArea.gd" id="7_x72qi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v85vk"]
+size = Vector2(18, 652)
 
 [node name="Game Scene" type="Node2D"]
+script = ExtResource("1_1prwy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(576.25, 324.875)
+position = Vector2(576, 325)
 scale = Vector2(1.43579, 1.42473)
 texture = ExtResource("1_fty8x")
 
@@ -19,10 +26,55 @@ texture = ExtResource("1_fty8x")
 position = Vector2(22, 666)
 
 [node name="Ball" parent="." instance=ExtResource("2_mgldw")]
-position = Vector2(562, 275)
+position = Vector2(575, 276)
 
 [node name="Left Paddle" parent="." instance=ExtResource("3_k1x21")]
 position = Vector2(38, 290)
 
 [node name="Right Paddle" parent="." instance=ExtResource("4_we1wx")]
 position = Vector2(1115, 290)
+scale = Vector2(1, 0.982767)
+
+[node name="LeftArea" type="Area2D" parent="."]
+position = Vector2(35, 2)
+script = ExtResource("6_tihmt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea"]
+position = Vector2(-1, 320)
+shape = SubResource("RectangleShape2D_v85vk")
+
+[node name="RightArea" type="Area2D" parent="."]
+position = Vector2(1120, 7)
+script = ExtResource("7_x72qi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
+position = Vector2(-1, 320)
+shape = SubResource("RectangleShape2D_v85vk")
+
+[node name="PlayerOneScore" type="Label" parent="."]
+offset_left = 1.0
+offset_right = 78.0
+offset_bottom = 70.0
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerTwoScore" type="Label" parent="."]
+offset_left = 1073.0
+offset_top = -2.0
+offset_right = 1150.0
+offset_bottom = 65.0
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+
+[connection signal="body_entered" from="LeftArea" to="LeftArea" method="_on_body_entered"]
+[connection signal="body_entered" from="RightArea" to="RightArea" method="_on_body_entered"]
